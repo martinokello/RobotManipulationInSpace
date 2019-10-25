@@ -1,0 +1,14 @@
+C:\Development\RoverManipulation\RoverManipulation\bin\Debug\RobotManipulation.exe.config
+C:\Development\RoverManipulation\RoverManipulation\bin\Debug\RobotManipulation.exe
+C:\Development\RoverManipulation\RoverManipulation\bin\Debug\RobotManipulation.pdb
+C:\Development\RoverManipulation\RoverManipulation\obj\Debug\RobotManipulation.csprojAssemblyReference.cache
+C:\Development\RoverManipulation\RoverManipulation\obj\Debug\RobotManipulation.csproj.CoreCompileInputs.cache
+C:\Development\RoverManipulation\RoverManipulation\obj\Debug\RobotManipulation.exe
+C:\Development\RoverManipulation\RoverManipulation\obj\Debug\RobotManipulation.pdb
+C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.exe.config
+C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.exe
+C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.pdb
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csproj.CoreCompileInputs.cache
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.exe
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.pdb
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csprojAssemblyReference.cache

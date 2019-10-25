@@ -1,0 +1,14 @@
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\RoverManipulation.Tests.deps.json
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\RoverManipulation.Tests.runtimeconfig.json
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\RoverManipulation.Tests.runtimeconfig.dev.json
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\RoverManipulation.Tests.dll
+C:\Development\RoverManipulation\RoverManipulation.Tests\bin\Debug\netcoreapp2.1\RoverManipulation.Tests.pdb
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.csprojAssemblyReference.cache
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.csproj.CoreCompileInputs.cache
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.AssemblyInfoInputs.cache
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.AssemblyInfo.cs
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.dll
+C:\Development\RoverManipulation\RoverManipulation.Tests\obj\Debug\netcoreapp2.1\RoverManipulation.Tests.pdb
