@@ -33,7 +33,10 @@ namespace RobotManipulation
             var controller = new RobotController(plane);
 
             var robots = new List<Robot>();
-            var environmentSetup = new EnvironmentSetup(controller, plane, robots, Console.In, Console.Out);
+            var inputOutputInstance = new StreamReadWriteInstance();
+            inputOutputInstance.TextReader = Console.In;
+            inputOutputInstance.TextWriter = Console.Out;
+            var environmentSetup = new EnvironmentSetup(controller, plane, robots, inputOutputInstance);
             environmentSetup.Execute();
         }
 

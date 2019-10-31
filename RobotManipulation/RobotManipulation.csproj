@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concretes\EnvironmentSetup.cs" />
+    <Compile Include="Concretes\StreamReadWriteInstance.cs" />
+    <Compile Include="Interfaces\IInputOutputStream.cs" />
     <Compile Include="Concretes\RobotController.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IMoveAbility.cs" />

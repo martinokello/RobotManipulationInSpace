@@ -11,4 +11,3 @@ C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.p
 C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csproj.CoreCompileInputs.cache
 C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.exe
 C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.pdb
-C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csprojAssemblyReference.cache

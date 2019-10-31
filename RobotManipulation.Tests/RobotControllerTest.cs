@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RobotManipulation.Concretes;
+using RobotManipulation.Interfaces;
 using RobotManipulation.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +15,7 @@ namespace RobotManipulation.Tests
         private TextReader _inputStream = new FakeStreamReader(string.Empty);
         private TextWriter _ouputStream = new FakeStreamWriter();
         private EnvironmentSetup _environment;
+        private StreamReadWriteInstance _streamInstance;
 
         [TestInitialize]
         public void SetUp()
@@ -44,8 +46,10 @@ namespace RobotManipulation.Tests
             Robots.Add(robot4);
 
             _controller.Robots = Robots.ToArray();
-
-            _environment = new EnvironmentSetup(_controller, plane, Robots, _inputStream, _ouputStream);
+            _streamInstance = new StreamReadWriteInstance();
+            _streamInstance.TextReader = new FakeStreamReader();
+            _streamInstance.TextWriter = new FakeStreamWriter();
+            _environment = new EnvironmentSetup(_controller, plane, Robots,_streamInstance);
         }
 
         [TestMethod]

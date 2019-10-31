@@ -12,33 +12,37 @@ namespace RobotManipulation.Concretes
         private RobotController _controller;
         private Plane _plane;
         private IList<Robot> _robots;
-        private TextReader _inputStream;
-        private TextWriter _ouputStream;
+        private TextReader _reader;
+        private TextWriter _writer;
+        IInputOutputStream _streamInstance;
 
-        public TextReader TextReader{
-            get {return _inputStream;}
-            set{ _inputStream = value;}
-        }
-        public TextWriter TextWriter
+
+
+        TextReader TextReader
         {
-            get { return _ouputStream; }
-            set { _ouputStream = value; }
+            get { return _streamInstance.TextReader; }
+            set { _streamInstance.TextReader = value; }
         }
-        public EnvironmentSetup(RobotController controller, Plane plane, IList<Robot> robots, TextReader inputStream, TextWriter ouputStream)
+        TextWriter TextWriter
+        {
+            get { return _streamInstance.TextWriter; }
+            set { _streamInstance.TextWriter = value; }
+        }
+
+        public EnvironmentSetup(RobotController controller, Plane plane, IList<Robot> robots, IInputOutputStream streamInstance)
         {
             _controller = controller;
             _plane = plane;
             _robots = robots;
-            _inputStream = inputStream;
-            _ouputStream = ouputStream;
+            _streamInstance = streamInstance;
         }
 
         public void Execute()
         {
             while (true)
             {
-                _ouputStream.WriteLine("Enter the cordinates and Orientation Of all Robots in the format: X Y Orientation \n(note* either of the values for Orientation N or E or S or W is acceptable for the orientation.");
-                var cordsAndOrientation = _inputStream.ReadLine();
+                _streamInstance.TextWriter.WriteLine("Enter the cordinates and Orientation Of all Robots in the format: X Y Orientation \n(note* either of the values for Orientation N or E or S or W is acceptable for the orientation.");
+                var cordsAndOrientation = _streamInstance.TextReader.ReadLine();
                 var RobotLocations = cordsAndOrientation.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 if (RobotLocations.Length != 3) throw new ArgumentException("Robot Locations should be valid");
                 var x = -1;
@@ -53,19 +57,19 @@ namespace RobotManipulation.Concretes
                 robot1.Orientation = actualOrientation;
                 robot1.Location = new Location { X = x, Y = y };
                 _robots.Add(robot1);
-                _ouputStream.WriteLine("Enter the control sequence as a string to control this Robot e.g. LRMMLLLMR");
-                var controlSequence = Console.ReadLine();
+                _streamInstance.TextWriter.WriteLine("Enter the control sequence as a string to control this Robot e.g. LRMMLLLMR");
+                var controlSequence = _streamInstance.TextReader.ReadLine();
                 MoveRobotSequence(controlSequence, _controller, robot1);
-                _ouputStream.WriteLine("To Add another Robot enter Y for Yes, or else N for No");
-                var anotherRobot = Console.In.ReadLine();
+                _streamInstance.TextWriter.WriteLine("To Add another Robot enter Y for Yes, or else N for No");
+                var anotherRobot = _streamInstance.TextReader.ReadLine();
 
                 if (!anotherRobot.ToLower().StartsWith("y", StringComparison.OrdinalIgnoreCase)) break;
             }
             _controller.Robots = _robots.ToArray();
-            _ouputStream.WriteLine("Expected Output:");
+            _streamInstance.TextWriter.WriteLine("Expected Output:");
             foreach (var Robot in _controller.Robots)
             {
-                _ouputStream.WriteLine("Position Of Robot: {0} {1} {2}", Robot.Location.X, Robot.Location.Y, Robot.Orientation.ToString());
+                _streamInstance.TextWriter.WriteLine($"Position Of Robot: {Robot.Location.X} { Robot.Location.Y} {Robot.Orientation.ToString()}");
             }
         }
         private void MoveRobotSequence(string controlSequence, RobotController controller, Robot robot1)
@@ -86,6 +90,16 @@ namespace RobotManipulation.Concretes
                     controller.MoveForward(robot1);
                 }
             }
+        }
+        
+        public void WriteLine(string text)
+        {
+            _streamInstance.TextWriter.WriteLine(text);
+        }
+
+        public string ReadLine()
+        {
+            return _streamInstance.TextReader.ReadLine();
         }
     }
 }
