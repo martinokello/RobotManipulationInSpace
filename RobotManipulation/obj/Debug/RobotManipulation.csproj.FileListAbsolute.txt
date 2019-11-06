@@ -8,9 +8,6 @@ C:\Development\RoverManipulation\RoverManipulation\obj\Debug\RobotManipulation.p
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.exe.config
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.exe
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\RobotManipulation.pdb
-C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csproj.CoreCompileInputs.cache
-C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.exe
-C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.pdb
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\netstandard.dll
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\System.AppContext.dll
@@ -114,4 +111,8 @@ C:\Development\RobotManipulation\RobotManipulation\bin\Debug\Castle.Core.xml
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Development\RobotManipulation\RobotManipulation\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.exe.config
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csproj.CoreCompileInputs.cache
 C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csproj.CopyComplete
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.exe
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.pdb
+C:\Development\RobotManipulation\RobotManipulation\obj\Debug\RobotManipulation.csprojAssemblyReference.cache

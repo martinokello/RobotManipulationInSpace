@@ -2,20 +2,20 @@
 
 namespace RobotManipulation.Tests
 {
-    internal class FakeStreamReader : TextReader
+    public class FakeStreamReader : TextReader
     {
         private string _lineToRead;
-        public FakeStreamReader()
+        public FakeStreamReader():base()
         {
 
         }
-        public FakeStreamReader(string lineToRead)
+        public FakeStreamReader(string lineToRead):base()
         {
             _lineToRead = lineToRead;
         }
         public override string ReadLine()
         {
-            return _lineToRead;
+            return base.ReadLine();
         }
     }
 }

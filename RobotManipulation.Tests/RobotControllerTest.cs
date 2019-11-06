@@ -180,7 +180,7 @@ namespace RobotManipulation.Tests
             //the dynamic execution, is counting number of reads which could be possible, but not reliable, and therefore too complex to test.
             /*Entry For Robot 1:
             10 10
-            1 2 N
+            2 4 E
             MMRMMRMRRM
             */
             var plane = new Plane(7, 6, new Location { X = 0, Y = 0 });
@@ -195,14 +195,11 @@ namespace RobotManipulation.Tests
             inputOutputInstance.TextWriter = new FakeStreamWriter();
 
             var environmentSetup = new Mock<EnvironmentSetup>();
-            /*environmentSetup.Setup(mq => mq.Robots).Returns(robots);
-            environmentSetup.Setup(mq => mq.Controller).Returns(controller);
-            environmentSetup.Setup(mq => mq.Plane).Returns(plane);*/
+
             environmentSetup.SetupProperty(mq => mq.Robots, robots);
             environmentSetup.SetupProperty(mq => mq.Controller, controller);
             environmentSetup.SetupProperty(mq => mq.Plane, plane);
             environmentSetup.SetupProperty(mq => mq.IInputOutputStream, inputOutputInstance);
-            environmentSetup.Setup(mq => mq.IInputOutputStream).Returns(inputOutputInstance);
             environmentSetup.Setup(mq => mq.ReadPlaneCordinates()).Returns("7 6");
             environmentSetup.Setup(mq => mq.ReadControlSequence()).Returns("MMRMMRMRRM");
             environmentSetup.Setup(mq => mq.Write1stLineOfOutput()).CallBase();
@@ -224,8 +221,8 @@ namespace RobotManipulation.Tests
             //the dynamic execution, is counting number of reads which could be possible, but not reliable, and therefore too complex to test.
             /*Entry For Robot 1:
             10 10
-            1 2 N
-            MMRMMRMRRM
+            3 4 N
+            LMLMLMLMM
             */
             var plane = new Plane(10,10, new Location { X = 0, Y = 0 });
             var robot1 = new Robot(plane);
@@ -239,14 +236,11 @@ namespace RobotManipulation.Tests
             inputOutputInstance.TextWriter = new FakeStreamWriter();
 
             var environmentSetup = new Mock<EnvironmentSetup>();
-            /*environmentSetup.Setup(mq => mq.Robots).Returns(robots);
-            environmentSetup.Setup(mq => mq.Controller).Returns(controller);
-            environmentSetup.Setup(mq => mq.Plane).Returns(plane);*/
+
             environmentSetup.SetupProperty(mq => mq.Robots, robots);
             environmentSetup.SetupProperty(mq => mq.Controller, controller);
             environmentSetup.SetupProperty(mq => mq.Plane, plane);
             environmentSetup.SetupProperty(mq => mq.IInputOutputStream, inputOutputInstance);
-            environmentSetup.Setup(mq => mq.IInputOutputStream).Returns(inputOutputInstance);
             environmentSetup.Setup(mq => mq.ReadPlaneCordinates()).Returns("10 10");
             environmentSetup.Setup(mq => mq.ReadControlSequence()).Returns("LMLMLMLMM");
             environmentSetup.Setup(mq => mq.Write1stLineOfOutput()).CallBase();
@@ -260,6 +254,61 @@ namespace RobotManipulation.Tests
             Assert.AreEqual(robot1.Location.X, 3);
             Assert.AreEqual(robot1.Location.Y, 5);
             Assert.AreEqual(robot1.Orientation, OrientationPosition.Orientation.N);
+
+        }
+        [TestMethod]
+        public void Test_Execute_Method_ON_Environment_With_Input_X3Y4OrientationNorthAndControlInputSequenceLMLMLMLMMAnd_With_Input_X2Y4OrientationEastAndControlInputSequenceMMRMMRMRRM()
+        {
+            //This Test Can't be Executed due to the fact that Streams are multi-read, and can't be faked easily unless
+            //the dynamic execution, is counting number of reads which could be possible, but not reliable, and therefore too complex to test.
+            /*Entry For Robot 1:
+            10 10
+            1 2 N
+            MMRMMRMRRM
+            */
+            var plane = new Plane(10, 10, new Location { X = 0, Y = 0 });
+            var controller = new RobotController(plane);
+
+            var robots = new List<Robot>();
+            var inputOutputInstance = new StreamReadWriteInstance();
+            inputOutputInstance.TextReader = new FakeStreamReader();
+            inputOutputInstance.TextWriter = new FakeStreamWriter();
+
+            var environmentSetup = new Mock<EnvironmentSetup>();
+
+            environmentSetup.SetupProperty(mq => mq.Robots, robots);
+            environmentSetup.SetupProperty(mq => mq.Controller, controller);
+            environmentSetup.SetupProperty(mq => mq.Plane, plane);
+            environmentSetup.SetupProperty(mq => mq.IInputOutputStream, inputOutputInstance);
+            environmentSetup.Setup(mq => mq.ReadPlaneCordinates()).Returns("10 10");
+            environmentSetup.Setup(mq => mq.ReadControlSequence()).Returns("LMLMLMLMM"); 
+            environmentSetup.Setup(mq => mq.GetLocationArray(It.IsAny<string>())).Returns("3 4 N".Split());
+            environmentSetup.Setup(mq => mq.Write1stLineOfOutput()).CallBase();
+            environmentSetup.Setup(mq => mq.Write2ndLineOfOutput()).CallBase();
+            environmentSetup.Setup(mq => mq.Write3rdLineOfOutput()).CallBase();
+            environmentSetup.Setup(mq => mq.Write4thLineOfOutput()).CallBase();
+            environmentSetup.Setup(mq => mq.ReadToAddAnotherRobot()).Returns("N");
+            environmentSetup.Setup(mq => mq.MoveRobotSequence(It.IsAny<string>(), It.IsAny<RobotController>(), It.IsAny<Robot>())).CallBase();
+            environmentSetup.Setup(mq => mq.Execute()).CallBase();
+            
+            environmentSetup.Object.Execute();
+
+            Assert.AreEqual(robots[0].Location.X, 3);
+            Assert.AreEqual(robots[0].Location.Y, 5);
+            Assert.AreEqual(robots[0].Orientation, OrientationPosition.Orientation.N);
+
+            var robots2 = new List<Robot>();
+            environmentSetup.SetupProperty(mq => mq.Robots, robots2);
+            environmentSetup.Setup(mq => mq.ReadPlaneCordinates()).Returns("7 6");
+            environmentSetup.Setup(mq => mq.ReadControlSequence()).Returns("MMRMMRMRRM");
+            environmentSetup.Setup(mq => mq.GetLocationArray(It.IsAny<string>())).Returns("2 4 E".Split());
+
+            environmentSetup.Object.Execute();
+
+            Assert.AreEqual(robots2[0].Location.X, 4);
+            Assert.AreEqual(robots2[0].Location.Y, 2);
+            Assert.AreEqual(robots2[0].Orientation, OrientationPosition.Orientation.E);
+
         }
     }
 }

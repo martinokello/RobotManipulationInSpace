@@ -4,9 +4,9 @@ using System.Text;
 
 namespace RobotManipulation.Tests
 {
-    internal class FakeStreamWriter : TextWriter
+    public class FakeStreamWriter : TextWriter
     {
-        public FakeStreamWriter()
+        public FakeStreamWriter() : base()
         {
         }
 
@@ -17,7 +17,7 @@ namespace RobotManipulation.Tests
 
         public override void WriteLine(string line)
         {
-            Console.Out.WriteLine(line);
+            base.WriteLine(line);
         }
     }
 }
